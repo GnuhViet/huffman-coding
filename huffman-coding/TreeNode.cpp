@@ -8,7 +8,7 @@ TreeNode::TreeNode()
 TreeNode::TreeNode(char ele, uint fre)
 {
     this->element = ele;
-    this->freq = freq;
+    this->freq = fre;
     left = right = nullptr;
 }
 

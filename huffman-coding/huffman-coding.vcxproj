@@ -140,17 +140,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Coding.cpp" />
-    <ClCompile Include="Encoding.cpp" />
     <ClCompile Include="huffman-coding.cpp" />
-    <ClCompile Include="TextRW.cpp" />
-    <ClCompile Include="Tree.cpp" />
     <ClCompile Include="TreeNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Coding.h" />
-    <ClInclude Include="Encoding.h" />
-    <ClInclude Include="TextRW.h" />
-    <ClInclude Include="Tree.h" />
     <ClInclude Include="TreeNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
