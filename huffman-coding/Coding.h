@@ -13,11 +13,16 @@ using namespace std;
 class Coding {
 private:
     TreeNode* root;
+    string coded;
     map<char, string> res;
-    static void addTable(map<char, string>& mp, TreeNode* node, string str);
+
+private:    
+    map<char, uint> buildTable(const string &msg);
+    void addResTable();
+    static void addResTable(map<char, string>& mp, TreeNode* node, string str);
+    
 public:
-    Coding(map<char, uint> table);
+    Coding(const string &msg);
     ~Coding();
-    void addTable();
-    map<char, string> getTable();
+    string getCodedString();
 };
