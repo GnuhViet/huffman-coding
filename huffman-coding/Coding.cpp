@@ -1,4 +1,4 @@
-#include "Coding.h"
+#include "header/Coding.h"
 
 map<char, uint> Coding::buildTable(const string &msg) {
      map<char, uint> mp;

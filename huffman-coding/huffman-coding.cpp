@@ -1,6 +1,6 @@
 #include <iostream>
-#include "TreeNode.h"
-#include "Coding.h"
+#include "header/TreeNode.h"
+#include "header/Coding.h"
 
 using namespace std;
 
