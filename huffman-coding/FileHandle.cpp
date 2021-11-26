@@ -2,7 +2,7 @@
 
 using namespace std;
 
-string FileHandle::FileReader(string fileName) {
+string FileHandle::FileReader(const string& fileName) {
     string data;
     ifstream infile;
     infile.open(fileName, ios::in);
@@ -12,7 +12,7 @@ string FileHandle::FileReader(string fileName) {
     return data;
 }
 
-void FileHandle::FileWriter(string fileName, string data) {
+void FileHandle::FileWriter(const string& fileName, const string& data) {
     ofstream outfile;
     outfile.open(fileName, ios::app);
     if (!outfile.is_open())

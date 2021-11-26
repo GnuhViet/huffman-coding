@@ -1,6 +1,6 @@
-#include "header/Coding.h"
+#include "header/EnCoding.h"
 
-map<char, uint> Coding::buildTable(const string &msg) {
+map<char, uint> EnCoding::buildTable(const string &msg) {
      map<char, uint> mp;
 
      char *check = new char[msg.length()];
@@ -28,20 +28,20 @@ map<char, uint> Coding::buildTable(const string &msg) {
      return mp;
 }
 
-void Coding::addResTable() {
+void EnCoding::addResTable() {
     addResTable(res, root, "");
 }
 
-void Coding::addResTable(map<char, string>& mp, TreeNode* node, const string& str) {
+void EnCoding::addResTable(map<char, string>& mp, TreeNode* node, const string& str) {
     if (node == nullptr)
         return;
-    if (node->getEle() != '$')
+    if (node->getEle() != '#')
         mp.insert(pair<char, string>(node->getEle(), str));
     addResTable(mp, node->getLeft(),  str + "0");
     addResTable(mp, node->getRight(), str + "1");
 }
 
-Coding::Coding(const string &msg)
+EnCoding::EnCoding(const string &msg)
 {
     map<char, uint> countTable;
     countTable = buildTable(msg);
@@ -66,7 +66,7 @@ Coding::Coding(const string &msg)
         right = minHeap.top();
         minHeap.pop();
 
-        root = new TreeNode('$', left->getFreq() + right->getFreq());
+        root = new TreeNode('#', left->getFreq() + right->getFreq());
 
         root->setLeft(left);
         root->setRight(right);
@@ -80,18 +80,18 @@ Coding::Coding(const string &msg)
         coded += res[x];
 }
 
-Coding::~Coding() {
+EnCoding::~EnCoding() {
     delete root;
 }
 
-string Coding::getCodedString() {
+string EnCoding::getCodedString() {
     return coded;
 }
 
-TreeNode* Coding::getRoot() {
+TreeNode* EnCoding::getRoot() {
     return root;
 }
 
-map<char, string> Coding::getTable() {
+map<char, string> EnCoding::getTable() {
     return res;
 }
