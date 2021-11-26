@@ -58,12 +58,6 @@ TreeNode* TreeNode::getRight()
     return right;
 }
 
-bool TreeNode::hasLeft()
-{
-    return left != nullptr;
-}
-
-bool TreeNode::hasRight()
-{
-    return right != nullptr;
+bool TreeNode::isLeaf() {
+    return left == nullptr && right == nullptr;
 }

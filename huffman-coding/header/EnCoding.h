@@ -10,7 +10,7 @@ typedef unsigned int uint;
 
 using namespace std;
 
-class Coding {
+class EnCoding {
 private:
     TreeNode* root;
     string coded;
@@ -22,8 +22,8 @@ private:
     static void addResTable(map<char, string>& mp, TreeNode* node, const string& str);
     
 public:
-    explicit Coding(const string &msg);
-    ~Coding();
+    explicit EnCoding(const string &msg);
+    ~EnCoding();
     string getCodedString();
     TreeNode* getRoot();
     map<char, string> getTable();

@@ -4,7 +4,7 @@
 
 class FileHandle {
 public:
-	static std::string FileReader(std::string fileName);
-	static void FileWriter(std::string fileName, std::string data);
+	static std::string FileReader(const std::string& fileName);
+	static void FileWriter(const std::string& fileName, const std::string& data);
 };
 

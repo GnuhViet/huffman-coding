@@ -2,8 +2,8 @@
 typedef unsigned int uint;
 class TreeNode {
 private:
-	char element;
-	uint freq;	//Frequency
+	char element{};
+	uint freq{};	//Frequency
 	TreeNode* left;
 	TreeNode* right;
 public:
@@ -18,7 +18,6 @@ public:
 	TreeNode* getLeft();
 	void setRight(TreeNode* right);
 	TreeNode* getRight();
-	bool hasLeft();
-	bool hasRight();
+	bool isLeaf();
 };
 
