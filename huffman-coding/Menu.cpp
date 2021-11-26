@@ -1,7 +1,26 @@
-#include "DeCoding.h"
-#include "EnCoding.h"
-#include "FileHandle.h"
-#include "Menu.h"
+#pragma once
+
+#include "DeCoding.cpp"
+#include "EnCoding.cpp"
+#include "FileHandle.cpp"
+
+#include <cstdlib>
+#include <conio.h>
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
+class Menu {
+private:
+    static void choice1();
+    static void choice2();
+    static void pause();
+    static string getPath();
+public:
+    static void primary();
+};
 
 void Menu::primary() {
     int choice;
@@ -32,17 +51,18 @@ void Menu::primary() {
 }
 
 void Menu::choice1() {
-    //system("cls");
     string filePath;
+    string treePath;
     cout << "nhap duong dan file:"; filePath = getPath();
+    cout << "nhap duong dan luu file tree.dat:"; treePath = getPath();
 
-    cout << "-duong dan:" + filePath;
+    cout << "-duong dan:" + filePath << endl;
 
     try {
         const string msg = FileHandle::StringReader(filePath);
         EnCoding obj(msg);
         FileHandle::StringWriter(filePath, obj.getCodedString());
-        FileHandle::TreeWriter("resource/tree.dat", obj.getRoot());
+        FileHandle::TreeWriter(treePath, obj.getRoot());
         cout << "nen file thanh cong";
     } catch (const char* &emsg) {
         cerr << emsg << endl;
@@ -58,7 +78,7 @@ void Menu::choice2() {
     cout << "nhap duong dan file: "; filePath = getPath();
     cout << "nhap duong dan file tree.dat: "; treePath = getPath();
 
-    cout << "-Duong dan file: " << filePath << "-Duong dan tree:" << treePath;
+    cout << "-Duong dan file:" << filePath << "\n-Duong dan tree:" << treePath << endl;
 
     try {
         const string codedMsg = FileHandle::StringReader(filePath);

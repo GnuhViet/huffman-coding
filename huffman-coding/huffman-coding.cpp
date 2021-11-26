@@ -1,6 +1,6 @@
 #include <iostream>
-#include "header/TreeNode.h"
-#include "header/Menu.h"
+#include "TreeNode.cpp"
+#include "Menu.cpp"
 
 using namespace std;
 

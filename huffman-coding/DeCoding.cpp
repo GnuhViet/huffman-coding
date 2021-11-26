@@ -1,4 +1,16 @@
-#include "header/DeCoding.h"
+#pragma once
+#include <string>
+#include "TreeNode.cpp"
+
+using namespace std;
+
+class DeCoding {
+private:
+    string deCoded;
+public:
+    DeCoding(const string &codedMsg, TreeNode *root);
+    string getDeCodedString();
+};
 
 DeCoding::DeCoding(const string &codedMsg, TreeNode *root) {
     deCoded = "";
