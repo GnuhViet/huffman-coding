@@ -1,20 +1,27 @@
 #include "Coding.h"
 
-void Coding::addTable() {
-    addTable(res, root, "");
+map<char, uint> Coding::buildTable(const string &msg) {
+     
 }
 
-void Coding::addTable(map<char, string>& mp, TreeNode* node, string str) {
+void Coding::addResTable() {
+    addResTable(res, root, "");
+}
+
+void Coding::addResTable(map<char, string>& mp, TreeNode* node, string str) {
     if (node == nullptr)
         return;
     if (node->getEle() != '$')
         mp.insert(pair<char, string>(node->getEle(), str));
-    addTable(mp, node->getLeft(),  str + "0");
-    addTable(mp, node->getRight(), str + "1");
+    addResTable(mp, node->getLeft(),  str + "0");
+    addResTable(mp, node->getRight(), str + "1");
 }
 
-Coding::Coding(map<char, uint> table)
+Coding::Coding(const string &msg)
 {
+    map<char, uint> countTable;
+    countTable = buildTable(msg);
+
     struct compare {
         bool operator()(TreeNode* l, TreeNode* r)
         {
@@ -25,7 +32,7 @@ Coding::Coding(map<char, uint> table)
     TreeNode *left, *right;
     priority_queue<TreeNode*, vector<TreeNode*>, compare> minHeap;
 
-    for (auto it = table.begin(); it != table.end(); ++it)
+    for (auto it = countTable.begin(); it != countTable.end(); ++it)
         minHeap.push(new TreeNode(it->first, it->second));
      
     while (minHeap.size() != 1) {
@@ -42,13 +49,14 @@ Coding::Coding(map<char, uint> table)
 
         minHeap.push(root);
     }
-    addTable();
+    addResTable();
 }
 
 Coding::~Coding() {
     delete root;
 }
 
-map<char, string> Coding::getTable() {
-    return res;
+string Coding::getCodedString()
+{
+    return string();
 }
