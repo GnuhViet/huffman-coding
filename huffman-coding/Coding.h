@@ -17,12 +17,14 @@ private:
     map<char, string> res;
 
 private:    
-    map<char, uint> buildTable(const string &msg);
+    static map<char, uint> buildTable(const string &msg);
     void addResTable();
-    static void addResTable(map<char, string>& mp, TreeNode* node, string str);
+    static void addResTable(map<char, string>& mp, TreeNode* node, const string& str);
     
 public:
-    Coding(const string &msg);
+    explicit Coding(const string &msg);
     ~Coding();
     string getCodedString();
+    TreeNode* getRoot();
+    map<char, string> getTable();
 };
