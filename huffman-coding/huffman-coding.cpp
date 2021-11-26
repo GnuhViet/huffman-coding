@@ -35,12 +35,12 @@ int main() {
         cout << "decode dung" << endl;
 
 
-    FileHandle::StringWriter("resource/output.txt", res);
-    cout << "chuoi tu file: " << FileHandle::StringReader("resource/output.txt");
+    FileHandle::StringWriter("resource/input.txt", res);
+    cout << "chuoi tu file: " << FileHandle::StringReader("resource/input.txt");
 
     FileHandle::TreeWriter("resource/tree.dat", test1.getRoot());
     TreeNode *testRoot = FileHandle::TreeReader("resource/tree.dat");
 
-    cout << "\nroot tu file:         ";inOrder(testRoot);
+    cout << "\nroot tu file:         "; inOrder(testRoot);
     cout << "\nroot tu chuong trinh: "; inOrder(test1.getRoot());
 }
