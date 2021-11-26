@@ -1,31 +1,21 @@
 #include <iostream>
-#include "TreeNode.h"
-#include "Coding.h"
-#include <map>
-
-typedef unsigned int uint;
+#include "header/TreeNode.h"
+#include "header/Coding.h"
 
 using namespace std;
 
 int main() {
-	map<char, uint> test;
-	test.insert(pair<char, uint>('a', 5));
-	test.insert(pair<char, uint>('b', 9));
-	test.insert(pair<char, uint>('c', 12));
-	test.insert(pair<char, uint>('d', 13));
-	test.insert(pair<char, uint>('e', 16));
-	test.insert(pair<char, uint>('f', 45));
-	
-	cout << "before table: " << endl;
-	for (auto it = test.begin(); it != test.end(); ++it)
-		cout << it->first << ": " << it->second << endl;
 
-	Coding test1(test);
-	test1.getTable();
-	
-	map<char, string> result;
-	result = test1.getTable();
-	cout << "\n\nafter table: " << endl;
-	for (auto it = result.begin(); it != result.end(); ++it)
-		cout << it->first << ": " << it->second << endl;
+    Coding test1("ABABBCBBDEEEABABBAEEDDCCABBBCDEEDCBCCCCDBBBCAAA");
+
+    string res = "00110011110111111001011011010011001111001011011001000101001111110110010110110001110101010110011111101000000";
+
+    if (test1.getCodedString() == res)
+        cout << "dung" << endl;
+    else
+        cout << "sai" << endl;
+
+    map<char, string> table = test1.getTable();
+    for (auto & it : table)
+        cout << it.first << ": " << it.second << endl;
 }
