@@ -1,9 +1,17 @@
 #include <iostream>
-#include <header/DeCoding.h>
-#include "header/TreeNode.h"
+#include "header/DeCoding.h"
 #include "header/EnCoding.h"
+#include "header/FileHandle.h"
 
 using namespace std;
+
+void inOrder(TreeNode *node) {
+    if (node == nullptr)
+        return;
+    cout << node->getEle() << ": " << node->getFreq() << " ";
+    inOrder(node->getLeft());
+    inOrder(node->getRight());
+}
 
 int main() {
     string msg = "ABABBCBBDEEEABABBAEEDDCCABBBCDEEDCBCCCCDBBBCAAA";
@@ -25,4 +33,14 @@ int main() {
 
     if (msg == test2.getDeCodedString())
         cout << "decode dung" << endl;
+
+
+    FileHandle::StringWriter("resource/output.txt", res);
+    cout << "chuoi tu file: " << FileHandle::StringReader("resource/output.txt");
+
+    FileHandle::TreeWriter("resource/tree.dat", test1.getRoot());
+    TreeNode *testRoot = FileHandle::TreeReader("resource/tree.dat");
+
+    cout << "\nroot tu file:         ";inOrder(testRoot);
+    cout << "\nroot tu chuong trinh: "; inOrder(test1.getRoot());
 }
