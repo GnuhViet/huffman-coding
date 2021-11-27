@@ -3,13 +3,14 @@
 #include "FileHandle.h"
 #include "Menu.h"
 
+
 void Menu::primary() {
     int choice;
     do {
         system("cls");
         cout << "-------------Menu---------------" << endl;
-        cout << "1. Nen file" << endl;
-        cout << "2. Giai nen file" << endl;
+        cout << "1. Ma hoa" << endl;
+        cout << "2. Giai ma" << endl;
         cout << "3. exit" << endl;
         cout << "--------------------------------" << endl;
         cout << "Nhap lua chon: "; cin >> choice;
@@ -24,6 +25,7 @@ void Menu::primary() {
                 pause();
                 break;
             case 3:
+                cout << "cam on ban da su dung !!" << endl;
                 break;
             default:
                 cout << "vui long nhap so tu 1 den 3" << endl;
@@ -32,42 +34,42 @@ void Menu::primary() {
 }
 
 void Menu::choice1() {
-    //system("cls");
     string filePath;
-    cout << "nhap duong dan file:"; filePath = getPath();
-
-    cout << "-duong dan:" + filePath;
+    string treePath;
+    cout << "nhap duong dan file            -VD: D:\\New folder\\input.txt" << endl;
+    cout << "Path: "; filePath = getPath();
+    cout << "\nnhap duong dan luu file tree -VD: D:\\New folder\\tree.dat" << endl;
+    cout << "Path: "; treePath = getPath();
 
     try {
         const string msg = FileHandle::StringReader(filePath);
         EnCoding obj(msg);
         FileHandle::StringWriter(filePath, obj.getCodedString());
-        FileHandle::TreeWriter("resource/tree.dat", obj.getRoot());
-        cout << "nen file thanh cong";
+        FileHandle::TreeWriter(treePath, obj.getRoot());
+
+        cout << "\n---Ma hoa thanh cong---";
     } catch (const char* &emsg) {
         cerr << emsg << endl;
     }
-
 }
 
 void Menu::choice2() {
-    //system("cls");
     string filePath;
     string treePath;
 
-    cout << "nhap duong dan file: "; filePath = getPath();
-    cout << "nhap duong dan file tree.dat: "; treePath = getPath();
-
-    cout << "-Duong dan file: " << filePath << "-Duong dan tree:" << treePath;
+    cout << "nhap duong dan file:        -VD: D:\\New folder\\input.txt" << endl;
+    cout << "Path: ";  filePath = getPath();
+    cout << "\nnhap duong dan file tree: -VD: D:\\New folder\\tree.dat" << endl;
+    cout << "Path: ";  treePath = getPath();
 
     try {
         const string codedMsg = FileHandle::StringReader(filePath);
         TreeNode *root = FileHandle::TreeReader(treePath);
-
         DeCoding obj(codedMsg, root);
-
         FileHandle::StringWriter(filePath, obj.getDeCodedString());
-        cout << "giai nen thanh cong";
+
+        cout << "\n---Giai ma thanh cong---";
+        delete root;
     } catch (const char* &emsg) {
         cerr << emsg << endl;
     }

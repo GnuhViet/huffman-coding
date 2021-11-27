@@ -18,19 +18,9 @@ TreeNode::~TreeNode()
     delete right;
 }
 
-void TreeNode::setEle(char ele)
-{
-    this->element = ele;
-}
-
 char TreeNode::getEle()
 {
     return element;
-}
-
-void TreeNode::setFreq(uint fre)
-{
-    this->freq = fre;
 }
 
 uint TreeNode::getFreq()
