@@ -32,7 +32,7 @@ void EnCoding::addResTable() {
     addResTable(res, root, "");
 }
 
-void EnCoding::addResTable(map<char, string>& mp, TreeNode* node, const string& str) {
+void EnCoding::addResTable(map<char, string> &mp, TreeNode *node, const string &str) {
     if (node == nullptr)
         return;
     if (node->getEle() != '#')

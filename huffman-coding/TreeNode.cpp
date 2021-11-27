@@ -28,7 +28,7 @@ uint TreeNode::getFreq()
     return freq;
 }
 
-void TreeNode::setLeft(TreeNode* left)
+void TreeNode::setLeft(TreeNode *left)
 {
     this->left = left;
 }
@@ -38,7 +38,7 @@ TreeNode* TreeNode::getLeft()
     return left;
 }
 
-void TreeNode::setRight(TreeNode* right)
+void TreeNode::setRight(TreeNode *right)
 {
     this->right = right;
 }

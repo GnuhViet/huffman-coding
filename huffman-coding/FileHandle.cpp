@@ -2,7 +2,7 @@
 
 #include <queue>
 
-string FileHandle::StringReader(const string& fileName) {
+string FileHandle::StringReader(const string &fileName) {
     string data;
     ifstream infile;
 
@@ -15,7 +15,7 @@ string FileHandle::StringReader(const string& fileName) {
     return data;
 }
 
-void FileHandle::StringWriter(const string& fileName, const string &data) {
+void FileHandle::StringWriter(const string &fileName, const string &data) {
     ofstream outfile;
 
     outfile.open(fileName.c_str(), ios::out);
