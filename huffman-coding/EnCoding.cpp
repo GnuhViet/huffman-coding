@@ -91,7 +91,3 @@ string EnCoding::getCodedString() {
 TreeNode* EnCoding::getRoot() {
     return root;
 }
-
-map<char, string> EnCoding::getTable() {
-    return res;
-}

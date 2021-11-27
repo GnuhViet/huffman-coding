@@ -26,5 +26,4 @@ public:
     ~EnCoding();
     string getCodedString();
     TreeNode* getRoot();
-    map<char, string> getTable();
 };
