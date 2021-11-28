@@ -2,4 +2,5 @@
 
 int main() {
     Menu::primary();
+    return 0;
 }
