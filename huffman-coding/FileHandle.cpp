@@ -55,7 +55,7 @@ void FileHandle::serialize(TreeNode *root, ofstream &outfile) {
         q.pop();
 
         if (node == nullptr)
-            outfile << "$ ";
+            outfile << emptyNode << ' ';
         else {
             if (node->getEle() != '\n' && node->getEle() != ' ')
                 outfile << node->getEle() << node->getFreq() << " ";
