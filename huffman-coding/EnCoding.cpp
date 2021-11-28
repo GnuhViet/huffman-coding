@@ -1,5 +1,7 @@
 #include "header/EnCoding.h"
 
+#define internal '#'
+
 map<char, uint> EnCoding::buildTable(const string &msg) {
      map<char, uint> mp;
 
@@ -35,7 +37,7 @@ void EnCoding::addResTable() {
 void EnCoding::addResTable(map<char, string> &mp, TreeNode *node, const string &str) {
     if (node == nullptr)
         return;
-    if (node->getEle() != '#')
+    if (node->getEle() != internal)
         mp.insert(pair<char, string>(node->getEle(), str));
     addResTable(mp, node->getLeft(),  str + "0");
     addResTable(mp, node->getRight(), str + "1");
@@ -66,7 +68,7 @@ EnCoding::EnCoding(const string &msg)
         right = minHeap.top();
         minHeap.pop();
 
-        root = new TreeNode('#', left->getFreq() + right->getFreq());
+        root = new TreeNode(internal, left->getFreq() + right->getFreq());
 
         root->setLeft(left);
         root->setRight(right);

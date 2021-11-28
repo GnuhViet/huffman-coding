@@ -1,6 +1,9 @@
 #include "header/FileHandle.h"
 
 #include <queue>
+#define emptyNode '$'
+#define newLine '7'
+#define space '_'
 
 string FileHandle::StringReader(const string &fileName) {
     string data;
@@ -10,7 +13,10 @@ string FileHandle::StringReader(const string &fileName) {
     if (!infile.is_open())
         throw "file khong ton tai";
 
-    infile >> data;
+    stringstream strStream;
+    strStream << infile.rdbuf();
+    data = strStream.str();
+
     infile.close();
     return data;
 }
@@ -51,7 +57,12 @@ void FileHandle::serialize(TreeNode *root, ofstream &outfile) {
         if (node == nullptr)
             outfile << "$ ";
         else {
-            outfile << node->getEle() << node->getFreq() << " ";
+            if (node->getEle() != '\n' && node->getEle() != ' ')
+                outfile << node->getEle() << node->getFreq() << " ";
+            else if (node->getEle() == '\n')
+                outfile << newLine << node->getFreq() << " ";
+            else // val == ' '
+                outfile << space << node->getFreq() << " ";
             q.push(node->getLeft());
             q.push(node->getRight());
         }
@@ -89,16 +100,26 @@ void FileHandle::deSerialize(TreeNode *&root, ifstream &infile) {
         q.pop();
 
         infile >> val;
-        if (val != '$') {
+        if (val != emptyNode) {
             infile >> fre;
-            node->setLeft(new TreeNode(val,fre));
+            if (val != newLine && val != space)
+                node->setLeft(new TreeNode(val,fre));
+            else if (val == newLine)
+                node->setLeft(new TreeNode('\n',fre));
+            else // val == space
+                node->setLeft(new TreeNode(' ', fre));
             q.push(node->getLeft());
         }
 
         infile >> val;
-        if (val != '$') {
+        if (val != emptyNode) {
             infile >> fre;
-            node->setRight(new TreeNode(val,fre));
+            if (val != newLine && val != space)
+                node->setRight(new TreeNode(val,fre));
+            else if (val == newLine)
+                node->setRight(new TreeNode('\n',fre));
+            else // val == space
+                node->setRight(new TreeNode(' ', fre));
             q.push(node->getRight());
         }
     }
