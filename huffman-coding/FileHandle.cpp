@@ -39,7 +39,7 @@ void FileHandle::TreeWriter(const string &fileName, TreeNode *root) {
 
 void FileHandle::serialize(TreeNode *root, ofstream &outfile) {
     TreeNode *node;
-    queue<TreeNode *> q;
+    queue<TreeNode*> q;
 
     // Level Order Traversal
     // using $ to mark nullptr
