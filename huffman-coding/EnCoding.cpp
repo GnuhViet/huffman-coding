@@ -43,8 +43,8 @@ void EnCoding::addResTable(map<char, string> &mp, TreeNode *node, const string &
     addResTable(mp, node->getRight(), str + "1");
 }
 
-EnCoding::EnCoding(const string &msg)
-{
+EnCoding::EnCoding(const string &msg) {
+
     map<char, uint> countTable;
     countTable = buildTable(msg);
 
